@@ -1,0 +1,7 @@
+node_modules
+dist
+.pages-site
+*.local
+.DS_Store
+npm-debug.log*
+.vercel
