@@ -1,0 +1,70 @@
+:root {
+  /* Палитра макета — извлечена из references/landing-design.pdf (канва 1440 px) */
+  --color-bg: #f9f5ee;
+  --color-surface: #ece4da;
+  --color-cream: #fbfaf7;
+  --color-text: #111e19;
+  --color-text-soft: #3a463f;
+  --color-green: #3c473f;
+  --color-green-hover: #4a574e;
+  --color-on-green: #f1efe8;
+  --color-accent: #a5ad96;
+  --color-muted: #666c67;
+  --color-line: #ded5c6;
+
+  /* Типографика */
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Manrope', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Формы */
+  --radius-photo: 28px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  /* Длина короткой линии под заголовками преимуществ (замер по PDF-макету) */
+  --rule-width: 379px;
+
+  /* Сетка: контентная полоса 1350 px при канве 1440 px (поля 45 px) */
+  --container-max: 1350px;
+  --container-pad: 45px;
+  --header-height: 130px;
+  /* Формы */
+  --radius-photo: 28px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+  /* Длина короткой линии под заголовками преимуществ (замер по PDF-макету) */
+  --rule-width: 379px;
+  /* Сетка: контентная полоса 1350 px при канве 1440 px (поля 45 px) */
+  --container-max: 1350px;
+  --container-pad: 45px;
+  --header-height: 130px;
+  --scroll-offset: calc(var(--header-height) + 12px);
+
+  /* Движение */
+  --dur-fast: 160ms;
+  --dur-med: 300ms;
+  --dur-reveal: 600ms;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Тени */
+  --shadow-card: 0 12px 34px rgba(37, 39, 32, 0.09);
+  --shadow-modal: 0 28px 80px rgba(37, 39, 32, 0.24);
+
+  /* Слои */
+  --z-header: 40;
+  --z-overlay: 60;
+  --z-modal: 70;
+}
+
+@media (max-width: 1100px) {
+  :root {
+    --container-pad: 32px;
+    --header-height: 96px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --container-pad: 20px;
+    --header-height: 72px;
+  }
+}

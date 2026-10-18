@@ -1,0 +1,177 @@
+.philosophy {
+  padding-top: 82px;
+}
+
+.philosophy__heading {
+  font-family: var(--font-serif);
+  /* Заголовок секции в макете: 64 px */
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-green);
+  margin-bottom: 44px;
+}
+
+.philosophy__layout {
+  display: grid;
+  /* Макет: фото 676 + отступ 35 + карточка 308 + отступ 21 + карточка 308 */
+  grid-template-columns: 676fr 35fr 308fr 21fr 308fr;
+  align-items: stretch;
+}
+
+.philosophy__photo-wrap {
+  grid-column: 1;
+  /* Кадр макета: 676×380 (ratio 1.78) */
+  aspect-ratio: 676 / 380;
+  min-height: 0;
+}
+
+.philosophy__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-photo);
+}
+
+.philosophy__card {
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 30px;
+  border-radius: var(--radius-card);
+  background: var(--color-green);
+  color: var(--color-on-green);
+}
+
+.philosophy__card + .philosophy__card {
+  grid-column: 5;
+}
+
+/* Разделитель из макета: 69 px от фото, до эстетики — её padding-top 75 px */
+.philosophy__divider {
+  margin-top: 69px;
+}
+
+.philosophy__card-title {
+  font-family: var(--font-serif);
+  /* Заголовки карточек в макете: 36 px, интерлиньяж 35 px */
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.philosophy__card-title-line {
+  display: block;
+}
+
+.philosophy__card-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 20px;
+  line-height: 1.45;
+  color: rgba(241, 239, 232, 0.88);
+}
+
+.philosophy__card-text {
+  /* Текст карточек в макете: 20 px, интерлиньяж 35 px */
+  font-size: 20px;
+  line-height: 1.75;
+  color: rgba(241, 239, 232, 0.8);
+}
+
+/* Промежуточная ширина: карточки сужаются — уменьшаем их типографику,
+   чтобы длинные слова заголовков не рвались */
+@media (max-width: 1280px) {
+  .philosophy__heading {
+    font-size: 56px;
+    margin-bottom: 36px;
+  }
+
+  .philosophy__card {
+    padding: 26px;
+  }
+
+  .philosophy__card-title {
+    font-size: 30px;
+  }
+
+  .philosophy__card-lines {
+    font-size: 18px;
+  }
+
+  .philosophy__card-text {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .philosophy {
+    padding-top: 56px;
+  }
+
+  .philosophy__divider {
+    margin-top: 44px;
+  }
+
+  .philosophy__heading {
+    font-size: 48px;
+    margin-bottom: 32px;
+  }
+
+  .philosophy__layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .philosophy__photo-wrap {
+    grid-column: 1 / -1;
+    aspect-ratio: 1.6 / 1;
+  }
+
+  .philosophy__card,
+  .philosophy__card + .philosophy__card {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .philosophy__heading {
+    font-size: 32px;
+  }
+
+  .philosophy__divider {
+    margin-top: 28px;
+  }
+
+  .philosophy__layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .philosophy__photo-wrap {
+    aspect-ratio: 1.45 / 1;
+  }
+
+  .philosophy__card {
+    gap: 20px;
+    padding: 22px;
+  }
+
+  .philosophy__card-title {
+    font-size: 26px;
+  }
+
+  .philosophy__card-lines {
+    font-size: 17px;
+  }
+
+  .philosophy__card-text {
+    font-size: 17px;
+  }
+}

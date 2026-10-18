@@ -4,7 +4,12 @@ on:
   push:
     branches: [main]
     paths:
-      - 'project site/dist/**'
+      - 'project site/src/**'
+      - 'project site/public/**'
+      - 'project site/index.html'
+      - 'project site/vite.config.ts'
+      - 'project site/package.json'
+      - 'project site/package-lock.json'
       - 'project site/scripts/prepare-pages.mjs'
       - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
@@ -32,6 +37,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: 'project site/package-lock.json'
+      - name: Install dependencies
+        run: npm ci
+        working-directory: 'project site'
+      - name: Build site
+        run: npm run build
+        working-directory: 'project site'
       - name: Prepare static site
         run: node 'project site/scripts/prepare-pages.mjs'
       - uses: actions/upload-pages-artifact@v3

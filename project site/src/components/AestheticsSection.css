@@ -1,0 +1,163 @@
+.aesthetics {
+  /* Ритм макета: 75 px после разделителя философии; снизу разделитель
+     с отступом 94 px, до галереи — её padding 86 px */
+  padding-block: 75px 0;
+}
+
+/* Разделитель из макета */
+.aesthetics__divider {
+  margin-top: 94px;
+}
+
+.aesthetics__layout {
+  display: grid;
+  /* Текст ~602 px + фото 620 px при канве 1350 */
+  grid-template-columns: 1fr 1.03fr;
+  grid-template-areas:
+    'title photo'
+    'paragraph photo'
+    'cta photo';
+  gap: 0 128px;
+  align-items: start;
+}
+
+.aesthetics__title {
+  grid-area: title;
+}
+
+.aesthetics__title {
+  font-family: var(--font-serif);
+  /* Заголовок в макете: 64 px, интерлиньяж 60 px */
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 0.94;
+  color: var(--color-green);
+}
+
+.aesthetics__title-line {
+  display: block;
+}
+
+.aesthetics__paragraph {
+  grid-area: paragraph;
+  margin-top: 168px;
+  /* Абзац в макете: 24 px, интерлиньяж 45 px, 4 строки */
+  font-size: 24px;
+  line-height: 1.875;
+  color: var(--color-text-soft);
+  max-width: 600px;
+}
+
+.aesthetics__cta {
+  grid-area: cta;
+  margin-top: 104px;
+}
+
+.aesthetics__cta-button {
+  min-width: 268px;
+  justify-content: space-between;
+}
+
+.aesthetics__card {
+  grid-area: photo;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-photo);
+  /* Вертикальный кадр встроенного фото: 1270×1500 (0.847) */
+  aspect-ratio: 1270 / 1500;
+  margin: 0;
+  background: var(--color-surface);
+}
+
+.aesthetics__card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+@media (max-width: 1100px) {
+  .aesthetics {
+    padding-block: 44px 0;
+  }
+
+  .aesthetics__divider {
+    margin-top: 44px;
+  }
+
+  .aesthetics__layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'title photo'
+      'paragraph photo'
+      'cta photo';
+    gap: 0 48px;
+  }
+
+  .aesthetics__title {
+    font-size: 48px;
+  }
+
+  .aesthetics__paragraph {
+    margin-top: 64px;
+    font-size: 20px;
+    max-width: none;
+  }
+
+  .aesthetics__cta {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 900px) {
+  .aesthetics__layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title'
+      'photo'
+      'paragraph'
+      'cta';
+    gap: 0;
+  }
+
+  .aesthetics__title {
+    margin-bottom: 32px;
+  }
+
+  .aesthetics__card {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .aesthetics {
+    padding-block: 32px 0;
+  }
+
+  .aesthetics__title {
+    margin-bottom: 24px;
+  }
+
+  .aesthetics__divider {
+    margin-top: 32px;
+  }
+
+  .aesthetics__title {
+    font-size: 34px;
+  }
+
+  .aesthetics__paragraph {
+    margin-top: 28px;
+    font-size: 17px;
+  }
+
+  .aesthetics__cta {
+    margin-top: 28px;
+  }
+
+  .aesthetics__card {
+    aspect-ratio: 4 / 5;
+  }
+}

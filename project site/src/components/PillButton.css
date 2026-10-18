@@ -1,0 +1,50 @@
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 58px;
+  padding: 0 22px 0 24px;
+  border-radius: var(--radius-pill);
+  background: var(--color-green);
+  color: var(--color-on-green);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.pill-button:hover {
+  background: var(--color-green-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(17, 30, 25, 0.22);
+}
+
+.pill-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.pill-button__label {
+  flex-shrink: 0;
+}
+
+.pill-button__arrow {
+  flex-shrink: 0;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.pill-button:hover .pill-button__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .pill-button {
+    height: 54px;
+    gap: 12px;
+    font-size: 17px;
+  }
+}

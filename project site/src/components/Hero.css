@@ -1,0 +1,201 @@
+.hero {
+  /* 130 (шапка) + 8 = 138: карточка 1350×750 заканчивается на 888 —
+     при viewport 1440×900 остаётся 12 px, как в макете */
+  padding-top: 8px;
+}
+.hero {
+  /* 130 (шапка) + 8 = 138: карточка 1350×750 заканчивается на 888 —
+     при viewport 1440×900 остаётся 12 px, как в макете */
+  padding-top: 8px;
+}
+
+.hero__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-photo);
+  /* Кадр макета: 1350×750 (ratio 1.8) */
+  aspect-ratio: 1350 / 750;
+  box-shadow: var(--shadow-card);
+}
+
+.hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Здание — в правой части кадра */
+  object-position: 62% 40%;
+}
+
+.hero__content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  /* Отступ текста от края карточки в макете — 45 px */
+  left: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* Надзаголовок: базовая линия на 104 px от верха карточки */
+  padding-top: 84px;
+  max-width: 585px;
+}
+
+.hero__eyebrow {
+  margin-bottom: 16px;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--color-muted);
+}
+
+.hero__title {
+  font-family: var(--font-serif);
+  /* H1: 64 px, интерлиньяж 60 px (0.94) */
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: 0.005em;
+  color: var(--color-green);
+}
+
+.hero__title-line {
+  display: block;
+}
+
+.hero__lead {
+  margin-top: 92px;
+  font-size: 20px;
+  line-height: 1.75;
+  color: var(--color-text-soft);
+}
+
+.hero__lead-line {
+  display: block;
+}
+
+.hero__cta {
+  margin-top: 98px;
+  min-width: 320px;
+  justify-content: space-between;
+}
+
+/* Планшетная ширина: текст на кремовом фоне, фото ниже */
+@media (max-width: 1100px) {
+  .hero__card {
+    aspect-ratio: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__content {
+    position: static;
+    order: 1;
+    max-width: none;
+    padding: 36px var(--container-pad) 32px;
+  }
+
+  .hero__eyebrow {
+    font-size: 17px;
+  }
+
+  .hero__title {
+    font-size: 52px;
+  }
+
+  .hero__lead {
+    margin-top: 32px;
+    font-size: 18px;
+    max-width: 620px;
+  }
+
+  .hero__cta {
+    margin-top: 32px;
+    min-width: 0;
+  }
+
+  .hero__photo {
+    position: static;
+    order: 2;
+    width: 100%;
+    height: clamp(300px, 46vw, 480px);
+  }
+}
+
+/* Телефон и портретный планшет: та же композиция, что в макете, —
+   текст поверх фото-карточки. Небо в верхней части кадра светлое
+   (как на десктопе), тёмно-зелёная типографика читается без изменений */
+@media (max-width: 900px) {
+  .hero__card {
+    display: block;
+    aspect-ratio: 4 / 3;
+    min-height: 460px;
+  }
+
+  .hero__photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--container-pad);
+    right: var(--container-pad);
+    max-width: none;
+    padding: 44px 0 32px;
+  }
+
+  .hero__eyebrow {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .hero__title {
+    font-size: 44px;
+  }
+
+  .hero__lead {
+    margin-top: 24px;
+    font-size: 16px;
+    max-width: 460px;
+  }
+
+  .hero__cta {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__card {
+    aspect-ratio: 3 / 4;
+    min-height: 0;
+  }
+
+  .hero__content {
+    padding-top: 30px;
+  }
+
+  .hero__eyebrow {
+    font-size: 14px;
+  }
+
+  .hero__title {
+    font-size: 34px;
+  }
+
+  .hero__lead {
+    margin-top: 20px;
+    font-size: 15px;
+    max-width: none;
+  }
+
+  .hero__cta {
+    margin-top: 36px;
+  }
+}

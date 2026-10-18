@@ -1,0 +1,215 @@
+.interiors {
+  /* Ритм макета: 86 px сверху и 130 px снизу до разделителя футера (замер PDF) */
+  padding-block: 86px 130px;
+}
+
+
+.interiors__layout {
+  display: grid;
+  /* Фото 676 px + текст ~546 px при канве 1350 */
+  grid-template-columns: 1.24fr 1fr;
+  grid-template-areas:
+    'stage title'
+    'stage paragraph';
+  gap: 0 128px;
+  align-items: start;
+}
+
+.interiors__stage {
+  grid-area: stage;
+  min-width: 0;
+}
+
+.interiors__frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-photo);
+  /* Кадр слайда в макете: 676×400 (ratio 1.69) */
+  aspect-ratio: 676 / 400;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.interiors__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 450ms var(--ease-out);
+}
+
+.interiors__slide.is-active {
+  opacity: 1;
+}
+
+.interiors__slide.is-broken {
+  opacity: 0;
+}
+
+.interiors__arrow {
+  position: absolute;
+  bottom: 14px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(251, 250, 247, 0.82);
+  color: var(--color-green);
+  box-shadow: 0 4px 14px rgba(17, 30, 25, 0.18);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.interiors__arrow:hover {
+  background: rgba(251, 250, 247, 0.95);
+  transform: translateY(-1px);
+}
+
+.interiors__arrow:active {
+  transform: translateY(0);
+}
+
+.interiors__arrow--prev {
+  left: 14px;
+}
+
+.interiors__arrow--next {
+  right: 14px;
+}
+
+/* Белая пилюля точек из макета: 100×43, по центру, 28 px от низа кадра */
+.interiors__dots {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  z-index: 2;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 43px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-cream);
+  box-shadow: 0 4px 14px rgba(17, 30, 25, 0.18);
+}
+
+.interiors__dot {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.interiors__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(60, 71, 63, 0.35);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.interiors__dot.is-active::after {
+  background: var(--color-green);
+  transform: scale(1.25);
+}
+
+.interiors__title {
+  grid-area: title;
+  text-align: right;
+  font-family: var(--font-serif);
+  /* Заголовок в макете: 55 px, интерлиньяж 60 px */
+  font-size: 55px;
+  font-weight: 500;
+  line-height: 1.09;
+  color: var(--color-green);
+}
+
+.interiors__paragraph {
+  grid-area: paragraph;
+  text-align: right;
+  margin-top: 68px;
+  /* Абзац в макете: 24 px, интерлиньяж 45 px, 5 строк */
+  font-size: 24px;
+  line-height: 1.875;
+  color: var(--color-text-soft);
+}
+
+@media (max-width: 1100px) {
+  .interiors {
+    padding-block: 48px 48px;
+  }
+
+  .interiors__layout {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'stage title'
+      'stage paragraph';
+    gap: 0 48px;
+  }
+
+  .interiors__title {
+    font-size: 44px;
+  }
+
+  .interiors__paragraph {
+    margin-top: 40px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .interiors__layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title'
+      'stage'
+      'paragraph';
+    gap: 0;
+  }
+
+  .interiors__title {
+    text-align: left;
+    margin-bottom: 28px;
+  }
+
+  .interiors__paragraph {
+    text-align: left;
+    margin-top: 24px;
+  }
+
+  .interiors__frame {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 640px) {
+  .interiors {
+    padding-block: 40px 44px;
+  }
+
+  .interiors__title {
+    font-size: 34px;
+  }
+
+  .interiors__paragraph {
+    font-size: 17px;
+  }
+
+  .interiors__dots {
+    bottom: 16px;
+    height: 36px;
+    gap: 8px;
+  }
+}
